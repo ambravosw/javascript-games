@@ -35,7 +35,6 @@ export default class Board {
         }
 
         this.currentMolePosition = Math.floor(Math.random() * 9);
-        console.log(this.currentMolePosition);
 
         this.squares[this.currentMolePosition].setMole();
     }

@@ -19,7 +19,6 @@ export default class App {
     start() {
         this.setTime();
         this.score.textContent = 0;
-        console.log('starting');
         this.countDownTimer = setInterval(() => { this.countDown(); }, 1000);
         this.board.setUp();
     }
