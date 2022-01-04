@@ -1,0 +1,40 @@
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    height: 360px;
+    width: 420px;
+    border: 1px solid yellow;
+}
+
+.grid div{
+    height: 60px;
+    width: 60px;
+}
+
+.rowHeader{
+    display: flex;
+    flex-wrap: wrap;
+    height: 60px;
+    width: 420px;
+    border: 1px solid yellow;
+}
+
+.rowHeader img{
+    height: 60px;
+    width: 60px;
+}
+
+.rowHeader img:hover {
+    background-color: pink;
+    border-radius: 30px;
+}
+
+.player-0{
+    background-color: red;
+    border-radius: 30px;
+}
+
+.player-1{
+    background-color: blue;
+    border-radius: 30px;
+}

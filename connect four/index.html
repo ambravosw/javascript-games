@@ -5,24 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Four</title>
     <script src="src/main.js" charset="utf-8" type="module"></script>
     <link rel="stylesheet" href="style/style.css">
     </link>
 </head>
 
 <body style="background-color: #333; color: white;">
-    <h1>Games</h1>
-    <ul>
-        <li>
-            <a style="color: white" href="./memoryCard/index.html">memory card</a>
-        </li>
-        <li>
-            <a style="color: white" href="./whac-a-mole/index.html">whac-a-mole</a>
-        </li>
-        <li>
-            <a style="color: white" href="./connect four/index.html">connect four</a>
-        </li>
-    </ul>
+    <h3>Current player: <span id="currentPlayer"></span></h3>
+    <h3 id="result"></h3>
+    <div class="rowHeader"></div>
+    <div class="grid"></div>
 </body>
 
 </html>
