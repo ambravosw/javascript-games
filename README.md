@@ -6,5 +6,6 @@ I have developed the games shown in the video:
 
 1. memory card = 3:11
 2. whac-a-mole = 11:39
+3. connect four -> 19:49
 
 Based on this video I have developed the games in OOP paradigm.
