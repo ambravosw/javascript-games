@@ -1,0 +1,21 @@
+.grid{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid pink;
+    margin: 10px;
+}
+
+.grid div{
+    width: 20px;
+    height: 20px;
+}
+
+.snake {
+    background-color: white;
+}
+
+.apple {
+    background-color: red;
+}
