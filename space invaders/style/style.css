@@ -1,0 +1,38 @@
+.grid{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid pink;
+    margin: 10px;
+}
+
+.grid div{
+    width: 20px;
+    height: 20px;
+}
+
+.shooter {
+    background-color: blue;
+}
+
+.invader {
+    background-color: purple;
+    border-radius: 10px;
+}
+
+.boom{
+    background-color: red;
+    animation-name: boomAnimation;
+    animation-duration: 1s;
+}
+
+.laser{
+    background-color: orange;
+    transform: scale(50%);
+}
+
+@keyframes boomAnimation {
+    from {background-color: red; }
+    to {background-color: yellow; transform: scale(10%);}
+  }

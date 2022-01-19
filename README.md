@@ -8,5 +8,6 @@ I have developed the games shown in the video:
 2. whac-a-mole = 11:39
 3. connect four = 19:49
 4. snake = 27:37
+5. space invaders = 43:10
 
 Based on this video I have developed the games in OOP paradigm.
