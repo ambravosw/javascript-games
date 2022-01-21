@@ -24,7 +24,7 @@ export default class Laser {
         if (el) {
             el.classList.add('laser');
         }
-        if (el.classList.contains('invader')) {
+        if (el && el.classList.contains('invader')) {
             const positionAux = position - 1;
             document.dispatchEvent(new CustomEvent("killed", { detail: { position: positionAux } }));
             el.classList.remove('laser');
