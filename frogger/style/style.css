@@ -19,6 +19,22 @@
     background-color: blue;
   }
   
+  .road {
+    background-color: grey;
+  }
+
+  .car {
+    background-color: black;
+  }
+
+  .river {
+    background-color: lightblue;
+  }
+
+  .log {
+    background-color: brown;
+  }
+
   /* .c1 {
     background-color: black;
   }

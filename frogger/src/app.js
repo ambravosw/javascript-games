@@ -5,13 +5,27 @@ export default class App {
     constructor() {
         console.log('app');
 
+        this.references = {
+            'keyup': null,
+            'click': null
+        };
+
+        this.reset();
+
+        document.getElementById('startBtn')
+            .addEventListener('click', this.references.click = (e) => { this.start(e) });
+    }
+
+    reset() {
         this.grid = new Grid();
         this.frog = new Frog(75);
         this.timeLeft = 20;
+        this.timerId = null;
+        document.querySelector('#result').innerHTML = '';
         this.printTime();
-
-        this.references = { 'keyup': null };
-        document.addEventListener('keyup', this.references.keyup = (e) => { this.control(e) });
+        if (this.references.keyup) {
+            document.removeEventListener('keyup', this.references.keyup);
+        }
     }
 
     printTime() {
@@ -42,13 +56,41 @@ export default class App {
         if (this.grid.checkWin(frogPosition)) {
             text = 'you WON!';
         }
-        if (this.grid.checkLose(frogPosition)) {
+        if (this.grid.checkLose(frogPosition) || this.timeLeft <= 0) {
             text = 'You LOSE';
         }
         if (text !== '') {
             document.querySelector('#result').innerHTML = text;
-            // clearInterval(timerId)
+            clearInterval(this.timerId);
             document.removeEventListener('keyup', this.references.keyup);
+        }
+    }
+
+    movePieces() {
+        this.timeLeft--;
+        this.printTime();
+        this.grid.moveCars();
+        this.grid.moveLogs(this.frog);
+        // if(this.grid.isOnRightLog(this.frog.getPosition())){
+        //     console.log('dere');
+        //     this.frog.moveRight();
+        // }
+        // if(this.grid.isOnLeftLog(this.frog.getPosition())){
+        //     this.frog.moveLeft();
+        // }
+        this.checkResult();
+    }
+
+    start() {
+        if (this.timerId) {
+            this.frog.remove();
+            clearInterval(this.timerId);
+            this.reset();
+        } else {
+            this.timerId = setInterval(() => { this.movePieces() }, 1000)
+            document.addEventListener(
+                'keyup',
+                this.references.keyup = (e) => { this.control(e) });
         }
     }
 }

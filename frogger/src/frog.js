@@ -2,6 +2,7 @@ export default class Frog {
     constructor(position) {
         this.position = position;
         this.width = 9;
+        this.paint();
     }
 
     paint() {
