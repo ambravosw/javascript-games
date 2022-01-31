@@ -48,7 +48,7 @@ export default class Grid {
     }
 
     isOnLeftLog(position) {
-        return this.isOnLog(position) && (postion >= 18 && position < 26);
+        return this.isOnLog(position) && (position >= 18 && position <= 26);
     }
 
     isOnRightLog(position) {

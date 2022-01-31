@@ -70,14 +70,13 @@ export default class App {
         this.timeLeft--;
         this.printTime();
         this.grid.moveCars();
-        this.grid.moveLogs(this.frog);
-        // if(this.grid.isOnRightLog(this.frog.getPosition())){
-        //     console.log('dere');
-        //     this.frog.moveRight();
-        // }
-        // if(this.grid.isOnLeftLog(this.frog.getPosition())){
-        //     this.frog.moveLeft();
-        // }
+        if(this.grid.isOnRightLog(this.frog.getPosition())){
+            this.frog.moveRight();
+        }
+        if(this.grid.isOnLeftLog(this.frog.getPosition())){
+            this.frog.moveLeft();
+        }
+        this.grid.moveLogs();
         this.checkResult();
     }
 
