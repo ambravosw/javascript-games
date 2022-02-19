@@ -1,9 +1,10 @@
 .grid {
+    background-color: blue;
     border: 1px solid;
     display: flex;
     flex-wrap: wrap;
-    height: 180px;
-    width: 180px;
+    height: 400px;
+    width: 200px;
   }
   
   .grid div {
