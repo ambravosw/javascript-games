@@ -6,20 +6,35 @@ export default class App {
 
         this.references = {
             'keydown': null,
+            'click': null,
         };
 
-        document.addEventListener(
-            'keydown',
-            this.references.keyup = (e) => { this.control(e) });
+        this.timerId = null;
 
         document.getElementById('startBtn')
             .addEventListener('click', this.references.click = () => { this.start() });
+
+    }
+
+    start() {
+        document.addEventListener(
+            'keydown',
+            this.references.keyup = (e) => { this.control(e) });
 
         this.grid = new Grid();
         this.tetrominosManager = new TetrominosManager();
 
         this.currentTetromino = this.tetrominosManager.next();
         console.log(this.currentTetromino);
+
+        if (this.timerId) {
+            clearInterval(this.timerId);
+            this.timerId = null;
+        }
+        else {
+            // this.moveDown();
+            this.timerId = setInterval(() => { this.moveDown() }, 1000);
+        }
     }
 
     control(e) {
@@ -41,16 +56,14 @@ export default class App {
         this.currentTetromino.rotate();
     }
 
-    moveDown(){
+    moveDown() {
+        this.grid.undraw(20, this.currentTetromino);
         this.nextTetromino = this.tetrominosManager.next();
         this.currentTetromino = this.tetrominosManager.current();
-        console.log("N " , this.nextTetromino);
-        console.log("C " , this.currentTetromino);
+        this.grid.draw(20, this.currentTetromino);
     }
 
-    start() {
-        console.log('a');
-    }
+
 
 }
 
