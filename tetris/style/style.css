@@ -5,14 +5,28 @@
     flex-wrap: wrap;
     height: 400px;
     width: 200px;
-  }
+}
   
-  .grid div {
-    height: 20px;
-    width: 20px;
-  }
+.grid div {
+  height: 20px;
+  width: 20px;
+}
 
-  .block {
-    background-color: burlywood;
-  }
-  
+.block {
+  background-color: burlywood;
+}
+
+.next {
+  background-color: brown;
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  height: 80px;
+  width: 200px;
+  margin: 1em;
+}
+
+.next div{
+  height: 20px;
+  width: 20px;
+}
