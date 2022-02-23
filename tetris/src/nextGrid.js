@@ -12,7 +12,7 @@ export default class NextGrid extends Grid {
 
     setNextTetromino(tetromino) {
         this.clear();
-        this.draw(0, tetromino);
+        this.draw(4,0, tetromino);
     }
 
     clear(){

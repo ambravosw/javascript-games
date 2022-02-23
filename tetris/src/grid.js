@@ -5,7 +5,6 @@ export default class Grid {
 
     create() {
         if (this.squares.length > 0) {
-            console.log(this.squares);
             for (let i = 0; i < this.squares.length; i++) {
                 this.squares[i].classList.remove('block');
             }
@@ -19,22 +18,22 @@ export default class Grid {
         }
     }
 
-    draw(position, tetromino) {
-        this.setUnsetStyle(position * this.GRID_WIDTH, tetromino, true);
+    draw(X, Y, tetromino) {
+        this.setUnsetStyle(Y * this.GRID_WIDTH + X, tetromino, true);
     }
 
-    undraw(position, tetromino) {
-        this.setUnsetStyle(position * this.GRID_WIDTH, tetromino, false);
+    undraw(X, Y, tetromino) {
+        this.setUnsetStyle(Y * this.GRID_WIDTH + X, tetromino, false);
     }
 
     setUnsetStyle(position, tetromino, set) {
-        const tetrominoSquares = tetromino.getSquares();
-        for (let i = 0; i < tetrominoSquares.length; i++) {
+        const tetrominioSquares = tetromino.getSquares();
+        for (let i = 0; i < tetrominioSquares.length; i++) {
             if (set) {
-                this.squares[tetrominoSquares[i] + position].classList.add('block');
+                this.squares[tetrominioSquares[i] + position].classList.add('block');
             }
             else {
-                this.squares[tetrominoSquares[i] + position].classList.remove('block');
+                this.squares[tetrominioSquares[i] + position].classList.remove('block');
             }
         }
     }

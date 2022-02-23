@@ -1,6 +1,7 @@
 import TetrominoI from "./tetrominoI.js";
 import TetrominoL from "./tetrominoL.js";
 import TetrominoO from "./tetrominoO.js";
+import TetrominoS from "./tetrominoS.js";
 import TetrominoT from "./tetrominoT.js";
 import TetrominoZ from "./tetrominoZ.js";
 
@@ -11,6 +12,7 @@ export default class TetrominosManager {
         this.tetrominos.push('TetrominoI');
         this.tetrominos.push('TetrominoL');
         this.tetrominos.push('TetrominoO');
+        this.tetrominos.push('TetrominoS');
         this.tetrominos.push('TetrominoT');
         this.tetrominos.push('TetrominoZ');
         this.nextTetromino = this.random();

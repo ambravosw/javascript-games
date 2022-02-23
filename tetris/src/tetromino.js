@@ -1,13 +1,16 @@
 export default class Tetromino {
 
     constructor() {
-        console.log('construct');
         this.gridWidth = 10;
         this.rotationIndex = 1;
     }
 
-    rotate() {
-        this.rotationIndex = (this.rotationIndex + 1) % this.shape.length;
+    rotate(direction) {
+        this.rotationIndex = (this.rotationIndex + direction) % this.shape.length;
+        if(this.rotationIndex < 0){
+            this.rotationIndex = this.shape.length + this.rotationIndex;
+        }
+        console.log(this.rotationIndex);
     }
 
     getSquares() {

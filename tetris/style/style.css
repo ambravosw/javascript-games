@@ -23,7 +23,7 @@
   flex-wrap: wrap;
   height: 80px;
   width: 200px;
-  margin: 1em;
+  margin: 1em 0;
 }
 
 .next div{
