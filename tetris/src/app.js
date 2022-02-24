@@ -11,6 +11,7 @@ export default class App {
         };
 
         this.timerId = null;
+        this.speed = 500;
 
         document.getElementById('startBtn')
             .addEventListener('click', this.references.click = () => { this.start() });
@@ -42,7 +43,7 @@ export default class App {
             this.timerId = null;
         }
         // this.moveDown();
-        this.timerId = setInterval(() => { this.moveDown() }, 1000);
+        this.timerId = setInterval(() => { this.moveDown() }, this.speed);
 
         this.started = true;
     }
@@ -67,9 +68,7 @@ export default class App {
     rotate() {
         this.grid.undraw(this.column, this.line, this.currentTetromino);
         this.currentTetromino.rotate(1);
-        console.log(this.currentTetromino);
-        if(this.column > 0 && this.grid.isAtRightEdge(this.column, this.line, this.currentTetromino)) {
-            console.log('undo', this.currentTetromino);
+        if (this.column > 0 && this.grid.isAtRightEdge(this.column, this.line, this.currentTetromino)) {
             this.currentTetromino.rotate(-1);
         }
         this.grid.draw(this.column, this.line, this.currentTetromino);
@@ -77,18 +76,36 @@ export default class App {
 
     moveDown() {
         this.grid.undraw(this.column, this.line, this.currentTetromino);
-        this.line++;
-        this.grid.draw(this.column, this.line, this.currentTetromino);
-        // this.freeze();
+        if (this.grid.isAtBottom(this.column, this.line + 1, this.currentTetromino) ||
+            this.grid.isOccupied(this.column, this.line + 1, this.currentTetromino)) {
+            this.freeze();
+        }
+        else {
+            this.line++;
+            this.grid.draw(this.column, this.line, this.currentTetromino);
+        }
+    }
 
-        // this.nextTetromino = this.tetrominosManager.next();
-        // this.nextGrid.setNextTetromino(this.nextTetromino);
-        // this.currentTetromino = this.tetrominosManager.current();
+    freeze() {
+        this.grid.freeze(this.column, this.line, this.currentTetromino);
+        this.grid.draw(this.column, this.line, this.currentTetromino);
+        this.grid.removeCompletedRows();
+        this.next();
+    }
+
+    next() {
+        this.line = 0;
+        this.column = 0;
+        this.nextTetromino = this.tetrominosManager.next();
+        this.nextGrid.setNextTetromino(this.nextTetromino);
+        this.currentTetromino = this.tetrominosManager.current();
+        this.grid.draw(this.column, this.line, this.currentTetromino);
     }
 
     moveLeft() {
         this.grid.undraw(this.column, this.line, this.currentTetromino);
-        if (!this.grid.isAtLeftEdge(this.column, this.line, this.currentTetromino)) {
+        if (!this.grid.isAtLeftEdge(this.column, this.line, this.currentTetromino) &&
+            (!this.grid.isOccupied(this.column - 1, this.line, this.currentTetromino))) {
             this.column -= 1;
         }
         this.grid.draw(this.column, this.line, this.currentTetromino);
@@ -96,14 +113,12 @@ export default class App {
 
     moveRight() {
         this.grid.undraw(this.column, this.line, this.currentTetromino);
-        if (!this.grid.isAtRightEdge(this.column+1, this.line, this.currentTetromino)) {
+        if (!this.grid.isAtRightEdge(this.column + 1, this.line, this.currentTetromino) &&
+            (!this.grid.isOccupied(this.column - 1, this.line, this.currentTetromino))) {
             this.column += 1;
         }
         this.grid.draw(this.column, this.line, this.currentTetromino);
     }
-
-
-
 }
 
 

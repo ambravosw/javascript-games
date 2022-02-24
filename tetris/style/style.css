@@ -16,6 +16,14 @@
   background-color: burlywood;
 }
 
+.block-freezed {
+  background-color: grey;
+}
+
+.block-test {
+  background-color: pink;
+}
+
 .next {
   background-color: brown;
   border: 1px solid;
