@@ -46,7 +46,7 @@ export default class MainGrid extends Grid {
         const position = Y * this.GRID_WIDTH + X;
 
         for (let i = 0; i < tetrominioSquares.length; i++) {
-            if(this.squares[tetrominioSquares[i] + position] === undefined){
+            if (this.squares[tetrominioSquares[i] + position] === undefined) {
                 continue;
             }
             const isOccupied = this.squares[tetrominioSquares[i] + position].classList.contains('block-freezed');
@@ -84,12 +84,17 @@ export default class MainGrid extends Grid {
     }
 
     removeRow(row) {
-        for(let rowIndex = row; rowIndex > 0; rowIndex-- ){
+        for (let rowIndex = row; rowIndex > 0; rowIndex--) {
             const initIndex = row * this.GRID_WIDTH;
             for (let i = initIndex; i < initIndex + this.GRID_WIDTH; i++) {
                 this.squares[i].classList.add('block-test');
             }
-   
+
         }
     }
+
+    isGameOver(X, Y) {
+        return Y * this.GRID_WIDTH + X <= 0;
+    }
+
 }

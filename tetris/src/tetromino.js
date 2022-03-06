@@ -10,7 +10,6 @@ export default class Tetromino {
         if(this.rotationIndex < 0){
             this.rotationIndex = this.shape.length + this.rotationIndex;
         }
-        console.log(this.rotationIndex);
     }
 
     getSquares() {

@@ -29,7 +29,7 @@ export default class App {
         if (!this.started) {
             document.addEventListener(
                 'keydown',
-                this.references.keyup = (e) => { this.control(e) });
+                this.references.keydown = (e) => { this.control(e) });
         }
 
         this.line = 0;
@@ -72,6 +72,9 @@ export default class App {
             this.currentTetromino.rotate(-1);
         }
         this.grid.draw(this.column, this.line, this.currentTetromino);
+        if (this.grid.isGameOver(this.column, this.line)) {
+            this.gameOver();
+        }
     }
 
     moveDown() {
@@ -90,7 +93,19 @@ export default class App {
         this.grid.freeze(this.column, this.line, this.currentTetromino);
         this.grid.draw(this.column, this.line, this.currentTetromino);
         this.grid.removeCompletedRows();
-        this.next();
+        if (this.grid.isGameOver(this.column, this.line)) {
+            this.gameOver();
+        }
+        else {
+            this.next();
+        }
+    }
+
+    gameOver() {
+        clearInterval(this.timerId);
+        this.timerId = null;
+        document.removeEventListener('keydown', this.references.keydown);
+        document.getElementById('score').textContent = 'Game Over!';
     }
 
     next() {
